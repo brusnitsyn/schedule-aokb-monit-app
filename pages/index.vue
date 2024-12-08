@@ -5,41 +5,47 @@ export default {
   name: 'IndexPage',
   components: { Centered },
 
+  // async fetch() {
+  //   await this.$axios.get('/schedule').then(res => {
+  //     this.schedule = res.data.schedule
+  //   })
+  // },
+
+  async asyncData({ $axios }) {
+    let schedule
+    await $axios.get('/schedule').then((res) => {
+      schedule = res.data.schedule
+    })
+
+    return { schedule }
+  },
+
   data() {
     return {
-      schedule: []
+      schedule: [],
     }
   },
 
-  async fetch() {
-    await this.$axios.get('/schedule').then(res => {
-      this.schedule = res.data.schedule
-      console.log(res.data.schedule)
-    })
-  },
-
-  // async asyncData({ $axios, $config }) {
-  //   const schedule = await $axios.$get(`/schedule`)
-  //   console.log(schedule)
-  //   return { schedule }
-  // },
-
   mounted() {
-    window.Echo.channel("schedule-item")
-      .listen("CreatedScheduleItem", (e) => {
+    window.Echo.channel('schedule-item')
+      .listen('CreatedScheduleItem', (e) => {
         this.schedule.push(e.message)
       })
-      .listen("UpdatedScheduleItem", (e) => {
+      .listen('UpdatedScheduleItem', (e) => {
         const updatedItem = e.message
-        const oldItemIndex = this.schedule.findIndex(item => item.id === updatedItem.id)
+        const oldItemIndex = this.schedule.findIndex(
+          (item) => item.id === updatedItem.id
+        )
 
         if (oldItemIndex !== -1) {
           this.schedule[oldItemIndex] = updatedItem
         }
       })
-      .listen("DeletedScheduleItem", (e) => {
+      .listen('DeletedScheduleItem', (e) => {
         const deletedItem = e.message
-        const deletingItemIndex = this.schedule.findIndex(item => item.id === deletedItem.id)
+        const deletingItemIndex = this.schedule.findIndex(
+          (item) => item.id === deletedItem.id
+        )
 
         if (deletingItemIndex !== -1) {
           this.schedule.splice(deletingItemIndex, 1)
@@ -71,7 +77,6 @@ export default {
           >
             Специалист
           </th>
-          <!--                    <th class="bg-primary border-t border-secondary w-[397px]"></th>-->
           <th
             class="bg-[#9dc3e6] border-t border-secondary w-[175px] text-[28pt]"
           >
