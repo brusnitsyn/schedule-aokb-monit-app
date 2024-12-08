@@ -21,26 +21,24 @@ export default {
     reverbScheme: process.env.VITE_REVERB_SCHEME,
     axios: {
       baseURL: 'http://127.0.0.1:8000/api',
-    }
+    },
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   tailwindcss: {
-    cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
+    cssPath: ['~/assets/css/tailwind.css', { injectPosition: 'first' }],
     configPath: 'tailwind.config',
     exposeConfig: {
-      level: 2
+      level: 2,
     },
     config: {},
     viewer: true,
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '~/plugins/echo.js', mode: 'client' }
-  ],
+  plugins: [{ src: '~/plugins/echo.js', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -51,7 +49,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/date-fns'
+    '@nuxtjs/date-fns',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

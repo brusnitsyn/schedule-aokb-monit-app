@@ -1,12 +1,12 @@
-import Echo from 'laravel-echo';
+import Echo from 'laravel-echo'
 
-import Pusher from 'pusher-js';
-import 'dotenv/config';
-window.Pusher = Pusher;
+import Pusher from 'pusher-js'
+import 'dotenv/config'
+window.Pusher = Pusher
 
-
-
-export default ({ $config: { reverbAppKey, reverbHost, reverbPort, reverbScheme } }) => {
+export default ({
+  $config: { reverbAppKey, reverbHost, reverbPort, reverbScheme },
+}) => {
   window.Echo = new Echo({
     broadcaster: 'reverb',
     key: reverbAppKey,
@@ -15,5 +15,5 @@ export default ({ $config: { reverbAppKey, reverbHost, reverbPort, reverbScheme 
     wssPort: reverbPort,
     forceTLS: (reverbScheme ?? 'https') === 'https',
     enabledTransports: ['ws', 'wss'],
-  });
+  })
 }

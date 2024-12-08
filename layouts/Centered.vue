@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="container max-w-[1225px] mx-auto py-2">
@@ -8,6 +6,4 @@
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

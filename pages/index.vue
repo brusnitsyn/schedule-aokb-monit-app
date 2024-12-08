@@ -1,4 +1,5 @@
 <script lang="ts">
+import { Context } from '@nuxt/types'
 import Centered from '~/layouts/Centered.vue'
 
 export default {
@@ -11,7 +12,7 @@ export default {
   //   })
   // },
 
-  async asyncData({ $axios }) {
+  async asyncData({ $axios }: Context) {
     let schedule
     await $axios.get('/schedule').then((res) => {
       schedule = res.data.schedule
@@ -27,21 +28,21 @@ export default {
   },
 
   mounted() {
-    window.Echo.channel('schedule-item')
-      .listen('CreatedScheduleItem', (e) => {
+    (window as any).Echo.channel('schedule-item')
+      .listen('CreatedScheduleItem', (e: any) => {
         this.schedule.push(e.message)
       })
-      .listen('UpdatedScheduleItem', (e) => {
+      .listen('UpdatedScheduleItem', (e: any) => {
         const updatedItem = e.message
         const oldItemIndex = this.schedule.findIndex(
-          (item) => item.id === updatedItem.id
+          (item: any) => item.id === updatedItem.id
         )
 
         if (oldItemIndex !== -1) {
           this.schedule[oldItemIndex] = updatedItem
         }
       })
-      .listen('DeletedScheduleItem', (e) => {
+      .listen('DeletedScheduleItem', (e: any) => {
         const deletedItem = e.message
         const deletingItemIndex = this.schedule.findIndex(
           (item) => item.id === deletedItem.id

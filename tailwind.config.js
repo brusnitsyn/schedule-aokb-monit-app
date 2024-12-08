@@ -8,13 +8,12 @@ module.exports = {
       },
       colors: {
         primary: '#5b9bd5',
-        secondary: '#9bc2e6'
+        secondary: '#9bc2e6',
       },
       fontSize: {
-        custom: '38px'
-      }
+        custom: '38px',
+      },
     },
   },
   plugins: [],
 }
-
