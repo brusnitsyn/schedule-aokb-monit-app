@@ -121,3 +121,12 @@ export default {
     </table>
   </Centered>
 </template>
+
+<style scoped>
+::v-deep(tr:nth-child(odd)) {
+  background-color: #5b9bd5;
+}
+::v-deep(tr:nth-child(even)) {
+  background-color: #fff;
+}
+</style>
