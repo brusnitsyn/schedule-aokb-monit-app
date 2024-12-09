@@ -90,18 +90,18 @@ export default {
           </th>
         </tr>
       </thead>
-      <tbody class="">
+      <tbody class="w-[1080px]">
         <tr v-for="scheduleItem in schedule" :key="scheduleItem.id" height="62">
-          <td class="text-[32px] leading-[36px] pl-4 py-1">
+          <td class="text-[28px] leading-[32px] pl-4 py-1">
             {{ scheduleItem.doctor_job }}
           </td>
-          <td class="text-[32px] leading-[36px] pl-4 text-end">
+          <td class="text-[28px] leading-[32px] pl-4 text-end">
             ({{ scheduleItem.doctor_fio }})
           </td>
-          <td align="center" class="text-[32px] leading-[36px]">
+          <td align="center" class="text-[28px] leading-[32px]">
             [{{ scheduleItem.room }}]
           </td>
-          <td align="center" class="text-[32px] leading-[36px]">
+          <td align="center" class="text-[28px] leading-[32px]">
             <div v-if="scheduleItem.status_schedule_item_id === 1">
               {{ $dateFns.format(scheduleItem.start_at, 'HH:mm') }}-{{
                 $dateFns.format(scheduleItem.end_at, 'HH:mm')
