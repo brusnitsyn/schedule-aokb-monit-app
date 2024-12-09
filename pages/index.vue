@@ -59,7 +59,7 @@ export default {
 <template>
   <Centered>
     <table
-      class="border max-w-[1060px] text-custom font-semibold uppercase leading-[28pt]"
+      class="border w-[1040px] text-custom font-semibold uppercase leading-[28pt]"
     >
       <thead>
         <tr>
