@@ -20,7 +20,7 @@ export default {
     reverbPort: process.env.VITE_REVERB_PORT,
     reverbScheme: process.env.VITE_REVERB_SCHEME,
     axios: {
-      baseURL: 'http://127.0.0.1:8000/api',
+      baseURL: process.env.API_URL,
     },
   },
 
