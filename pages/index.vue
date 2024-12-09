@@ -12,14 +12,14 @@ export default {
   //   })
   // },
 
-  // async asyncData({ $axios }: Context) {
-  //   let schedule
-  //   await $axios.get('/schedule').then((res) => {
-  //     schedule = res.data.schedule
-  //   })
-  //
-  //   return { schedule }
-  // },
+  async asyncData({ $axios }: Context) {
+    let schedule
+    await $axios.get('/schedule').then((res) => {
+      schedule = res.data.schedule
+    })
+
+    return { schedule }
+  },
 
   data() {
     return {
