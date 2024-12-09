@@ -95,7 +95,7 @@ export default {
           <td class="max-w-[352px] text-[32px] leading-[36px] pl-4 py-1">
             {{ scheduleItem.doctor_job }}
           </td>
-          <td class="max-w-[397px] text-[32px] leading-[36px] pl-4">
+          <td class="max-w-[397px] text-[32px] leading-[36px] pl-4 text-end">
             ({{ scheduleItem.doctor_fio }})
           </td>
           <td align="center" class="text-[32px] leading-[36px]">
