@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="container max-w-[1225px] mx-auto py-2">
+  <div class="container max-w-[1280px] mx-auto py-2">
     <slot />
   </div>
 </template>
