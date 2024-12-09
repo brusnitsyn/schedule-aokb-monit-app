@@ -59,7 +59,7 @@ export default {
 <template>
   <Centered>
     <table
-      class="border w-[1040px] text-custom font-semibold uppercase leading-[28pt]"
+      class="table-fixed border text-custom font-semibold uppercase leading-[28pt]"
     >
       <thead>
         <tr>
@@ -92,10 +92,10 @@ export default {
       </thead>
       <tbody class="">
         <tr v-for="scheduleItem in schedule" :key="scheduleItem.id" height="62">
-          <td class="max-w-[352px] text-[32px] leading-[36px] pl-4 py-1">
+          <td class="text-[32px] leading-[36px] pl-4 py-1">
             {{ scheduleItem.doctor_job }}
           </td>
-          <td class="max-w-[397px] text-[32px] leading-[36px] pl-4 text-end">
+          <td class="text-[32px] leading-[36px] pl-4 text-end">
             ({{ scheduleItem.doctor_fio }})
           </td>
           <td align="center" class="text-[32px] leading-[36px]">

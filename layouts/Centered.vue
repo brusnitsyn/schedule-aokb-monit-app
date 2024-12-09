@@ -1,7 +1,8 @@
-<script setup lang="ts"></script>
+<script lang="ts">
+</script>
 
 <template>
-  <div class="max-h-screen my-auto py-2 -rotate-90 h-full absolute left-4 inset-y-0">
+  <div class="max-w-[1080px] h-[1080px] -rotate-90 absolute left-0 top-0 scale-95">
     <slot />
   </div>
 </template>
