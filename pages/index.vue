@@ -59,7 +59,7 @@ export default {
 <template>
   <Centered>
     <table
-      class="border w-full text-custom font-semibold uppercase leading-[28pt]"
+      class="border max-w-[1060px] text-custom font-semibold uppercase leading-[28pt]"
     >
       <thead>
         <tr>
@@ -73,18 +73,18 @@ export default {
         </tr>
         <tr>
           <th
-            class="bg-[#b4c6e7] border-t border-secondary w-[352px] text-[28pt] py-2"
+            class="bg-[#b4c6e7] border-t border-secondary text-[28pt] py-2"
             colspan="2"
           >
             Специалист
           </th>
           <th
-            class="bg-[#9dc3e6] border-t border-secondary w-[175px] text-[28pt]"
+            class="bg-[#9dc3e6] border-t border-secondary text-[28pt]"
           >
             Кабинет
           </th>
           <th
-            class="bg-[#9dc3e6] border-t border-secondary w-[340px] text-[28pt]"
+            class="bg-[#9dc3e6] border-t border-secondary text-[28pt]"
           >
             Время приёма
           </th>
