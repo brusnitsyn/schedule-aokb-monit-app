@@ -90,7 +90,7 @@ export default {
           </th>
         </tr>
       </thead>
-      <tbody class="w-[1080px]">
+      <tbody class="w-[1120px]">
         <tr v-for="scheduleItem in schedule" :key="scheduleItem.id" height="62">
           <td class="text-[28px] leading-[32px] pl-4 py-1">
             {{ scheduleItem.doctor_job }}
