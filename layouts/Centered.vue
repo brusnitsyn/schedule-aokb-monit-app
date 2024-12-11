@@ -1,10 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
-  <div class="container mx-auto max-w-[1120px]">
-    <div class="flex">
-      <slot />
-    </div>
+  <div class="left-0 top-0 absolute max-w-[980px] max-h-[1080px] -rotate-90">
+    <slot />
   </div>
 </template>
 
