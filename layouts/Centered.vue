@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="left-0 top-0 absolute max-w-[980px] max-h-[1080px] -rotate-90">
+  <div class="left-[100px] top-0 absolute max-w-[895px] max-h-[1000px] -rotate-90">
     <slot />
   </div>
 </template>
