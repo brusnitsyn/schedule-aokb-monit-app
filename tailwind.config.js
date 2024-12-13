@@ -7,8 +7,8 @@ module.exports = {
         sans: ['Liberation Sans'],
       },
       colors: {
-        primary: '#5b9bd5',
-        secondary: '#9bc2e6',
+        primary: '#ec6608',
+        secondary: '#384653',
       },
       fontSize: {
         custom: '38px',

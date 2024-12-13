@@ -1,16 +1,19 @@
 <script lang="ts">
 import { Context } from '@nuxt/types'
-import Centered from '~/layouts/Centered.vue'
+import { Navigation, Pagination } from 'swiper'
+import { Scrollbar, Autoplay } from 'swiper/core'
+import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
+import { useNow } from '@vueuse/core'
+import ruLocale from 'date-fns/locale/ru'
+import 'swiper/swiper-bundle.css'
+SwiperCore.use([Navigation, Pagination, Scrollbar, Autoplay])
 
 export default {
   name: 'IndexPage',
-  components: { Centered },
-
-  // async fetch() {
-  //   await this.$axios.get('/schedule').then(res => {
-  //     this.schedule = res.data.schedule
-  //   })
-  // },
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
 
   async asyncData({ $axios }: Context) {
     let schedule
@@ -25,6 +28,12 @@ export default {
     return {
       schedule: [],
     }
+  },
+
+  computed: {
+    getNowDate: function () {
+      return this.$dateFns.format(useNow().value, 'dd MMMM yyyy HH:mm:ss', { locale: ruLocale })
+    },
   },
 
   mounted() {
@@ -57,73 +66,73 @@ export default {
 </script>
 
 <template>
-  <Centered>
-    <table
-      class="table-fixed border text-custom font-semibold uppercase leading-[28pt]"
-    >
-      <thead>
-        <tr>
-          <td class="bg-primary" colspan="4">
+  <div class="h-screen max-h-screen flex flex-col gap-y-6 p-6">
+    <div class="flex flex-row justify-between items-center w-full px-2">
+      <img src="/logo.svg" class="w-[280px]" />
+      <div class="flex flex-col">
+        <h1 class="uppercase font-bold text-center text-3xl">
+          Расписание работы врачей
+        </h1>
+        <div class="font-bold text-2xl text-secondary text-end">
+          {{ getNowDate }}
+        </div>
+      </div>
+    </div>
+    <div>
+      <Swiper
+        :direction="'vertical'"
+        :slides-per-view="'auto'"
+        :autoplay="{ delay: 5000, disableOnInteraction: false }"
+      >
+        <SwiperSlide v-for="(groupSchedule, index) in schedule" :key="index">
+          <div class="grid grid-cols-2 gap-4 text-[28px]">
             <div
-              class="flex flex-row justify-center items-center w-full py-3 text-white text-[28pt]"
+              v-for="scheduleItem in groupSchedule"
+              :key="scheduleItem.id"
+              class="flex flex-row items-center border rounded-lg bg-white shadow p-4 gap-x-6"
             >
-              РАСПИСАНИЕ РАБОТЫ ВРАЧЕЙ
+              <div
+                class="relative bg-primary rounded-full h-[68px] w-[68px] shrink-0"
+              >
+                <div class="flex items-center justify-center absolute inset-0">
+                  <div class="font-bold pt-0.5">
+                    {{ scheduleItem.room }}
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col w-full">
+                <div class="flex flex-row justify-between items-center">
+                  <div class="font-bold uppercase">
+                    {{ scheduleItem.doctor_job }}
+                  </div>
+                  <div
+                    v-if="scheduleItem.status_schedule_item_id === 1"
+                    class="font-bold text-green-500"
+                  >
+                    {{ $dateFns.format(scheduleItem.start_at, 'HH:mm') }}-{{
+                      $dateFns.format(scheduleItem.end_at, 'HH:mm')
+                    }}
+                  </div>
+                  <div v-else class="font-bold text-red-500 uppercase">
+                    {{ scheduleItem.statusScheduleItem.text }}
+                  </div>
+                </div>
+                <div class="capitalize text-secondary">
+                  {{ scheduleItem.doctor_name }}
+                </div>
+              </div>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <th
-            class="bg-[#b4c6e7] border-t border-secondary text-[28pt] py-2"
-            colspan="2"
-          >
-            Специалист
-          </th>
-          <th
-            class="bg-[#9dc3e6] border-t border-secondary text-[28pt]"
-          >
-            Кабинет
-          </th>
-          <th
-            class="bg-[#9dc3e6] border-t border-secondary text-[28pt]"
-          >
-            Время приёма
-          </th>
-        </tr>
-      </thead>
-      <tbody class="w-[1120px]">
-        <tr v-for="scheduleItem in schedule" :key="scheduleItem.id" height="62">
-          <td class="text-[28px] leading-[32px] pl-4 py-1">
-            {{ scheduleItem.doctor_job }}
-          </td>
-          <td class="text-[28px] leading-[32px] pl-4 text-end">
-            ({{ scheduleItem.doctor_fio }})
-          </td>
-          <td align="center" class="text-[28px] leading-[32px]">
-            [{{ scheduleItem.room }}]
-          </td>
-          <td align="center" class="text-[28px] leading-[32px]">
-            <div v-if="scheduleItem.status_schedule_item_id === 1">
-              {{ $dateFns.format(scheduleItem.start_at, 'HH:mm') }}-{{
-                $dateFns.format(scheduleItem.end_at, 'HH:mm')
-              }}
-            </div>
-            <div v-else>{{ scheduleItem.statusScheduleItem.text }}</div>
-          </td>
-        </tr>
-        <tr
-          class="!bg-transparent text-[32px] text-center normal-case"
-          height="66"
-        >
-          <td colspan="4">
-            Полный список мед. работников на сайте www.aokb28.su
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </Centered>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
+  </div>
 </template>
 
 <style scoped>
+::v-deep(.swiper-container) {
+  @apply h-[calc(100vh-124px)] p-2;
+}
 ::v-deep(tr:nth-child(odd)) {
   background-color: #5b9bd5;
 }

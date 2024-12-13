@@ -50,6 +50,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/date-fns',
+    '@vueuse/nuxt',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

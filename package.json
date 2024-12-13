@@ -19,6 +19,7 @@
     "dotenv": "^16.4.7",
     "nuxt": "^2.15.8",
     "nuxt-start": "^2.18.1",
+    "swiper-vue2": "^1.0.10",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"
@@ -30,6 +31,8 @@
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@nuxtjs/eslint-module": "^3.1.0",
     "@nuxtjs/tailwindcss": "^6.12.2",
+    "@vueuse/core": "7.6.2",
+    "@vueuse/nuxt": "7.6.2",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-nuxt": "^4.0.0",
