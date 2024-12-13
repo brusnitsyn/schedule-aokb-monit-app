@@ -82,6 +82,7 @@ export default {
       <Swiper
         :direction="'vertical'"
         :slides-per-view="'auto'"
+        :speed="0"
         :autoplay="{ delay: 5000, disableOnInteraction: false }"
       >
         <SwiperSlide v-for="(groupSchedule, index) in schedule" :key="index">
