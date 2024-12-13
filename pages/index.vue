@@ -92,7 +92,7 @@ export default {
               class="flex flex-row items-center border rounded-lg bg-white shadow p-4 gap-x-6"
             >
               <div
-                class="relative bg-primary rounded-full h-[68px] w-[68px] shrink-0"
+                class="relative bg-primary rounded-full h-[48px] w-[48px] shrink-0"
               >
                 <div class="flex items-center justify-center absolute inset-0">
                   <div class="font-bold pt-0.5">
