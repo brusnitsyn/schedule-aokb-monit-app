@@ -66,7 +66,7 @@ export default {
 </script>
 
 <template>
-  <div class="h-screen max-h-screen flex flex-col gap-y-6 p-6">
+  <div class="h-screen max-h-screen flex flex-col p-6">
     <div class="flex flex-row justify-between items-center w-full px-2">
       <img src="/logo.svg" class="w-[280px]" />
       <div class="flex flex-col">
@@ -78,7 +78,7 @@ export default {
         </div>
       </div>
     </div>
-    <div>
+    <div class="mt-6">
       <Swiper
         :direction="'vertical'"
         :slides-per-view="'auto'"
@@ -100,7 +100,7 @@ export default {
                   </div>
                 </div>
               </div>
-              <div class="flex flex-col w-full pl-6">
+              <div class="flex flex-col w-full pl-4">
                 <div class="flex flex-row justify-between items-center">
                   <div class="font-bold uppercase">
                     {{ scheduleItem.doctor_job }}
