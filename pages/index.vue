@@ -85,7 +85,7 @@ export default {
         :autoplay="{ delay: 5000, disableOnInteraction: false }"
       >
         <SwiperSlide v-for="(groupSchedule, index) in schedule" :key="index">
-          <div class="grid grid-cols-2 gap-4 text-[28px]">
+          <div class="grid grid-cols-2 gap-4 text-[20px]">
             <div
               v-for="scheduleItem in groupSchedule"
               :key="scheduleItem.id"
