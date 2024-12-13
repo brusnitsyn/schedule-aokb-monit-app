@@ -89,7 +89,7 @@ export default {
             <div
               v-for="scheduleItem in groupSchedule"
               :key="scheduleItem.id"
-              class="flex flex-row items-center border rounded-lg bg-white shadow p-4 gap-x-6"
+              class="flex flex-row items-center border rounded-lg bg-white shadow p-4"
             >
               <div
                 class="relative bg-primary rounded-full h-[48px] w-[48px] shrink-0"
@@ -100,7 +100,7 @@ export default {
                   </div>
                 </div>
               </div>
-              <div class="flex flex-col w-full">
+              <div class="flex flex-col w-full pl-6">
                 <div class="flex flex-row justify-between items-center">
                   <div class="font-bold uppercase">
                     {{ scheduleItem.doctor_job }}
