@@ -39,26 +39,32 @@ export default {
   mounted() {
     (window as any).Echo.channel('schedule-item')
       .listen('CreatedScheduleItem', (e: any) => {
-        this.schedule.push(e.message)
+        this.schedule[this.schedule.length].push(e.message)
       })
       .listen('UpdatedScheduleItem', (e: any) => {
         const updatedItem = e.message
-        const oldItemIndex = this.schedule.findIndex(
-          (item: any) => item.id === updatedItem.id
-        )
 
-        if (oldItemIndex !== -1) {
-          this.schedule[oldItemIndex] = updatedItem
+        for (let i = 0; i < this.schedule.length; i++) {
+          const oldIndex = this.schedule[i].findIndex((item) => item.id === updatedItem.id)
+
+          if (oldIndex !== -1) {
+            this.schedule[i][oldIndex] = updatedItem
+            return
+          }
         }
       })
       .listen('DeletedScheduleItem', (e: any) => {
         const deletedItem = e.message
-        const deletingItemIndex = this.schedule.findIndex(
-          (item) => item.id === deletedItem.id
-        )
 
-        if (deletingItemIndex !== -1) {
-          this.schedule.splice(deletingItemIndex, 1)
+        for (let i = 0; i < this.schedule.length; i++) {
+          const deletingItemIndex = this.schedule[i].findIndex(
+            (item) => item.id === deletedItem.id
+          )
+
+          if (deletingItemIndex !== -1) {
+            this.schedule[i].splice(deletingItemIndex, 1)
+            return
+          }
         }
       })
   },
@@ -93,10 +99,10 @@ export default {
               class="flex flex-row items-center border rounded-lg bg-white shadow p-4"
             >
               <div
-                class="relative bg-primary rounded-full h-[48px] w-[48px] shrink-0"
+                class="relative bg-primary rounded-full h-[48px] w-[48px] shrink-0 bg-opacity-[0.16]"
               >
                 <div class="flex items-center justify-center absolute inset-0">
-                  <div class="font-bold pt-0.5">
+                  <div class="font-bold pt-0.5 text-primary">
                     {{ scheduleItem.room }}
                   </div>
                 </div>
