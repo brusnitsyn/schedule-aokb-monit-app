@@ -76,10 +76,10 @@ export default {
     <div class="flex flex-row justify-between items-center w-full px-2">
       <img src="/logo.svg" class="w-[280px]" />
       <div class="flex flex-col">
-        <h1 class="uppercase font-bold text-center text-3xl">
+        <h1 class="uppercase font-semibold text-center text-3xl">
           Расписание работы врачей
         </h1>
-        <div class="font-bold text-2xl text-secondary text-end">
+        <div class="font-semibold text-2xl text-secondary text-end">
           {{ getNowDate }}
         </div>
       </div>
@@ -88,6 +88,7 @@ export default {
       <Swiper
         :direction="'vertical'"
         :slides-per-view="'auto'"
+        :space-between="16"
         :speed="0"
         :autoplay="{ delay: 10000, disableOnInteraction: false }"
       >
@@ -102,25 +103,25 @@ export default {
                 class="relative bg-primary rounded-full h-[48px] w-[48px] shrink-0 bg-opacity-[0.16]"
               >
                 <div class="flex items-center justify-center absolute inset-0">
-                  <div class="font-bold pt-0.5 text-primary">
+                  <div class="font-semibold pt-0.5 text-primary">
                     {{ scheduleItem.room }}
                   </div>
                 </div>
               </div>
               <div class="flex flex-col w-full pl-4">
                 <div class="flex flex-row justify-between items-center">
-                  <div class="font-bold uppercase">
+                  <div class="font-semibold uppercase">
                     {{ scheduleItem.doctor_job }}
                   </div>
                   <div
                     v-if="scheduleItem.status_schedule_item_id === 1"
-                    class="font-bold text-green-500"
+                    class="font-semibold text-green-500"
                   >
                     {{ $dateFns.format(scheduleItem.start_at, 'HH:mm') }}-{{
                       $dateFns.format(scheduleItem.end_at, 'HH:mm')
                     }}
                   </div>
-                  <div v-else class="font-bold text-red-500 uppercase">
+                  <div v-else class="font-semibold text-red-500 uppercase">
                     {{ scheduleItem.statusScheduleItem.text }}
                   </div>
                 </div>

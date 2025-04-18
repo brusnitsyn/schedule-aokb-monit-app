@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Liberation Sans'],
+        sans: ['Golos Text'],
       },
       colors: {
         primary: '#ec6608',
