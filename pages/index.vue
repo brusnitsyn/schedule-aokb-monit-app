@@ -84,9 +84,7 @@ export default {
 
   methods: {
     getServerTime() {
-      this.eventSource = useEventSource(`http://${this.$config.reverbHost}:3031/sse/time`, ['ServerTimeEvent'], {
-        autoReconnect: true,
-      })
+      this.eventSource = useEventSource(`http://${this.$config.reverbHost}:3031/sse/time`)
     }
   },
 }
