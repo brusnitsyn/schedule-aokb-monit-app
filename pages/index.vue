@@ -3,7 +3,7 @@ import { Context } from '@nuxt/types'
 import { Navigation, Pagination } from 'swiper'
 import { Scrollbar, Autoplay } from 'swiper/core'
 import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
-import { useNow } from '@vueuse/core'
+import { useEventSource, useNow } from '@vueuse/core'
 import ruLocale from 'date-fns/locale/ru'
 import 'swiper/swiper-bundle.css'
 SwiperCore.use([Navigation, Pagination, Scrollbar, Autoplay])
@@ -27,13 +27,25 @@ export default {
   data() {
     return {
       schedule: [],
+      eventSource: null,
+      serverTime: null,
     }
   },
 
   computed: {
     getNowDate: function () {
+      if (this.eventSource !== null && this.eventSource.data !== null) {
+        const data = JSON.parse(this.eventSource.data)
+        return this.$dateFns.format(new Date(data.time), 'dd MMMM yyyy HH:mm:ss', { locale: ruLocale })
+      }
       return this.$dateFns.format(useNow().value, 'dd MMMM yyyy HH:mm:ss', { locale: ruLocale })
     },
+  },
+
+  beforeDestroy() {
+      if (this.eventSource) {
+        this.eventSource.close()
+      }
   },
 
   mounted() {
@@ -67,6 +79,16 @@ export default {
           }
         }
       })
+
+    this.getServerTime()
+  },
+
+  methods: {
+    getServerTime() {
+      this.eventSource = useEventSource('http://127.0.0.1:8000/sse/time', ['ServerTimeEvent'], {
+        autoReconnect: true,
+      })
+    }
   },
 }
 </script>
